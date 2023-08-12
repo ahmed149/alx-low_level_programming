@@ -17,6 +17,7 @@ int main(void)
 	{
 		secondDigit = firstDigit;
 		while (secondDigit <= 99)
+		{
 
 			if (secondDigit != firstDigit)
 			{
