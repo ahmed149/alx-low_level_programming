@@ -3,7 +3,7 @@
 /**
  * _abs - function that computes the absolute
  * value of an integer
- * 0n: takes in integer type inpus for function
+ * @n: takes in integer type inpus for function
  * Return: Always 0
 */
 
