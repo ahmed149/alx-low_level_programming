@@ -5,7 +5,7 @@
  * 0 if n is zero and - if n is less
  * than zero.
  *
- * 0n: takes integer type input for function.
+ * 0 n: takes integer type input for function.
  * Return: 1 if +, 0 of 0 -1 if -
 */
 
