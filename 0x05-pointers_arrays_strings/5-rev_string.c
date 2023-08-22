@@ -19,4 +19,4 @@ void rev_string(char *s)
 		s[i] = s[l - 1 -i];
 		s[l -1 -i] = temp;
 	}
-g
+}
