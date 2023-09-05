@@ -1,88 +1,54 @@
-#include "main.h"
-#include <stdio.h>
+#include "holberton.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * number - function to calculate number of words
- * @str: string being passed to check for words
- *
- * Return: number of words
- */
-int number(char *str)
+  * argstostr - convert the params passed to the program to string
+  * @ac: the argument count
+  * @av: the argument vector
+  *
+  * Return: ...
+  */
+char *argstostr(int ac, char **av)
 {
-	int a, num = 0;
+	int ch = 0, i = 0, j = 0, k = 0;
+	char *s;
 
-	for (a = 0; str[a] != '\0'; a++)
+	if (ac == 0 || av == NULL)
+		return (NULL);
+
+	while (i < ac)
 	{
-		if (*str == ' ')
-			str++;
-		else
+		while (av[i][j])
 		{
-			for (; str[a] != ' ' && str[a] != '\0'; a++)
-				str++;
-			num++;
+			ch++;
+			j++;
 		}
+
+		j = 0;
+		i++;
 	}
-	return (num);
-}
-/**
- * free_everything - frees the memory
- * @string: pointer values being passed for freeing
- * @i: counter
- */
-void free_everything(char **string, int i)
-{
-	for (; i > 0;)
-		free(string[--i]);
-	free(string);
-}
 
-/**
- * strtow - function that splits string into words
- * @str: string being passed
- * Return: null if string is empty or null or function fails
- */
-char **strtow(char *str)
-{
-	int total_words = 0, b = 0, c = 0, length = 0;
-	char **words, *found_word;
+	s = malloc((sizeof(char) * ch) + ac + 1);
 
-	if (str == 0 || *str == 0)
-		return (NULL);
-	total_words = number(str);
-	if (total_words == 0)
-		return (NULL);
-	words = malloc((total_words + 1) * sizeof(char *));
-	if (words == 0)
-		return (NULL);
-	for (; *str != '\0' &&  b < total_words;)
+	i = 0;
+	while (av[i])
 	{
-		if (*str == ' ')
-			str++;
-		else
+		while (av[i][j])
 		{
-			found_word = str;
-			for (; *str != ' ' && *str != '\0';)
-			{
-				length++;
-				str++;
-			}
-			words[b] = malloc((length + 1) * sizeof(char));
-			if (words[b] == 0)
-			{
-				free_everything(words, b);
-				return (NULL);
-			}
-			while (*found_word != ' ' && *found_word != '\0')
-			{
-				words[b][c] = *found_word;
-				found_word++;
-				c++;
-			}
-			words[b][c] = '\0';
-			b++;
-			str++;
+			s[k] = av[i][j];
+			k++;
+			j++;
 		}
+
+		s[k] = '\n';
+
+		j = 0;
+		k++;
+		i++;
 	}
-	return (words);
+
+	k++;
+	s[k] = '\0';
+	return (s);
 }
